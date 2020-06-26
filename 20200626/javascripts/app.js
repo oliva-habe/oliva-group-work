@@ -9,14 +9,14 @@ function isValid(oneLine) {
 function solveWormEatingCaluculatorForPlus(intermediate) {
     intermediate.result = 'xx?xxx';
 
-    if (!isSimbole(intermediate.operand1.slice(0,-1)) 
-        & !isSimbole(intermediate.operand2.slice(0,-1)) 
-        & !isSimbole(intermediate.result.slice(0,-1))) {
+    if (!isSymbol(intermediate.operand1.slice(0,-1))
+        & !isSymbol(intermediate.operand2.slice(0,-1))
+        & !isSymbol(intermediate.result.slice(0,-1))) {
         
     }
-    else if (isSimbole(intermediate.operand1.slice(0,-1))
-        & !isSimbole(intermediate.operand2.slice(0,-1))
-        & isSimbole(intermediate.result.slice(0,-1))) {
+    else if (isSymbol(intermediate.operand1.slice(0,-1))
+        & !isSymbol(intermediate.operand2.slice(0,-1))
+        & isSymbol(intermediate.result.slice(0,-1))) {
             
     }
 
@@ -24,6 +24,21 @@ function solveWormEatingCaluculatorForPlus(intermediate) {
 }
 
 function solveWormEatingCaluculatorForMinus(intermediate) {
+
+    if(
+        intermediate.operand1.length === intermediate.operand2.length &&
+        intermediate.operand2.length === intermediate.result.length &&
+        intermediate.operand1.length === intermediate.operand1.length &&
+        ! intermediate.result.contains("\?")
+    ) {
+
+        
+        for (let i in intermediate.result.reverse()) {
+
+
+        }
+    }
+
     return undefined;
 }
 
@@ -76,7 +91,7 @@ function convert(oneLine) {
     
 }
 
-function isSimbole(i) {
+function isSymbol(i) {
     return i == '?';
 }
 
@@ -107,4 +122,3 @@ const execute = (testData) => {
 
     return resultData.join("\n");
 }
-
