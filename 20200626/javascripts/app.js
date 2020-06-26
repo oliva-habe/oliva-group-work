@@ -1,9 +1,10 @@
 const invalidValueString = "Invalid value!!";
 
 function isValid(oneLine) {
-    reg = /([\d\?]+)\,([\d\?]+)\,([\+\-\*]),(([\d\?]+),([\d\?]+))?,([\d\?]+)/;
+    reg = /([\?\d]+)\,([\d\?]+)\,([\+\-\*])\,(([\d\?]+)\,([\d\?]+)\,)?([\d\?]+)/;
 
-    return oneLine.match(reg);
+    let match = oneLine.match(reg);
+    return match != null;
 }
 
 function solveWormEatingCaluculatorForPlus(intermediate) {
@@ -42,19 +43,19 @@ function solveWormEatingCaluculatorForPlus(intermediate) {
 
 function solveWormEatingCaluculatorForMinus(intermediate) {
 
-    if(
-        intermediate.operand1.length === intermediate.operand2.length &&
-        intermediate.operand2.length === intermediate.result.length &&
-        intermediate.operand1.length === intermediate.operand1.length &&
-        ! intermediate.result.contains("\?")
-    ) {
-
-        
-        for (let i in intermediate.result.reverse()) {
-
-
-        }
-    }
+    // maxLength = Math.max(intermediate.operand1.length, intermediate.operand2.length, intermediate.result.length);
+    //
+    // opl1Rev = intermediate.operand1.reverse();
+    // opl2Rev = intermediate.operand2.reverse();
+    // resRev = intermediate.result.reverse();
+    //
+    // for (var i = 0; i < maxLength; i++) {
+    //     if(isSymbol(opl1Rev[i]) && isSymbol(opl2Rev[i]) && isSymbol(resRev[i])) {
+    //         break;
+    //     } else if (isSymbol(opl1Rev[i]) && isSymbol(opl2Rev[i]) && !isSymbol(resRev[i])) {
+    //
+    //     }
+    // }
 
     return undefined;
 }
@@ -123,18 +124,21 @@ const execute = (testData) => {
 
     var resultData = [];
     testData.forEach(function (oneLine) {
-        if (!isValid(oneLine)) {
-            resultData.push(invalidValueString)
+        var valid = isValid(oneLine);
+        if (! valid) {
+            resultData.push(invalidValueString);
+            return;
         }
 
         var intermediate = convert(oneLine);
         if (intermediate === invalidValueString) {
-            resultData.push(invalidValueString)
+            resultData.push(invalidValueString);
+            return;
         }
 
         var result = solveWormEatingCaluculator(intermediate);
 
-        resultData.push(result);
+        resultData.push(oneLine + " " + result);
     })
 
     return resultData.join("\n");
