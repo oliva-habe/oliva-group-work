@@ -32,6 +32,18 @@ function solveWormEatingCaluculatorForPlus(intermediate) {
             ope_num_2 = res_num - ope_num_1;
         }
     }
+    else if (
+        !isSymbol(ope_num_1) &&
+        !isSymbol(ope_num_2) &&
+        isSymbol(res_num)
+    ) {
+        tmp_res_num = parseInt(ope_num_1) + parseInt(ope_num_2);
+        if (String(tmp_res_num).length >= 2) {
+            res_num = String(tmp_res_num).slice(-1);
+        } else {
+            res_num = tmp_res_num;
+        }
+    }
     res = [];
     res.push(ope_num_1);
     res.push(ope_num_2);
