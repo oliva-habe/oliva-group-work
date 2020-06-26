@@ -5,6 +5,15 @@ function isValid(oneLine) {
 }
 
 function solveWormEatingCaluculatorForPlus(intermediate) {
+    intermediate.result = 'xx?xxx';
+
+    if (isSimbole(intermediate.operand1.slice(0,-1)) 
+    & isSimbole(intermediate.operand2.slice(0,-1)) 
+    & isSimbole(intermediate.result.slice(0,-1))) {
+
+    }
+    elif
+
     return undefined;
 }
 
@@ -58,6 +67,11 @@ function convert(oneLine) {
     } else {
         return invalidValueString;
     }
+    
+}
+
+function isSimbole(i) {
+    return i == '?';
 }
 
 // この関数を実装してください。
@@ -87,3 +101,4 @@ const execute = (testData) => {
 
     return resultData.join("\n");
 }
+
