@@ -89,11 +89,11 @@ function solveWormEatingCaluculatorForMinus(intermediate) {
     //     }
     // }
 
-    return undefined;
+    return invalidValueString;
 }
 
 function solveWormEatingCaluculatorForMulti(intermediate) {
-    return undefined;
+    return invalidValueString;
 }
 
 function solveWormEatingCaluculator(intermediate) {
@@ -170,7 +170,8 @@ const execute = (testData) => {
 
         var result = solveWormEatingCaluculator(intermediate);
 
-        resultData.push(oneLine + " " + result);
+        console.log(oneLine + " " + result);
+        resultData.push(result);
     })
 
     return resultData.join("\n");
