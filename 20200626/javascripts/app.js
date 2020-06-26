@@ -128,7 +128,7 @@ function isSymbol(i) {
 // この関数を実装してください。
 const execute = (testData) => {
 
-    if (testData == null || testData == undefined) {
+    if (testData === null || testData === undefined) {
         return invalidValueString
     }
 
