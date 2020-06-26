@@ -8,7 +8,7 @@ function isValid(oneLine) {
 }
 
 function solveWormEatingCaluculatorForPlus(intermediate) {
-    // intermediate.forEach(element)
+    
     ope_num_1 = intermediate.operand1.slice(-1);
     ope_num_2 = intermediate.operand2.slice(-1);
     res_num = intermediate.result.slice(-1);
