@@ -18,35 +18,30 @@ function solveWormEatingCaluculatorForPlus(intermediate) {
         !isSymbol(ope_num_2) &&
         !isSymbol(res_num)
     ) {
-        
-    }
-    else if (
+
+    } else if (
         !isSymbol(ope_num_1) &&
         isSymbol(ope_num_2) &&
         !isSymbol(res_num)
     ) {
         if (res_num < ope_num_1) {
             tmp_res_num = "1" + String(res_num);
-            ope_num_2 = parseInt(tmp_res_num,10) - ope_num_1;
-        }
-        else {
+            ope_num_2 = parseInt(tmp_res_num, 10) - ope_num_1;
+        } else {
             ope_num_2 = res_num - ope_num_1;
         }
-    }
-    else if (
+    } else if (
         isSymbol(ope_num_1) &&
         !isSymbol(ope_num_2) &&
         !isSymbol(res_num)
     ) {
         if (res_num < ope_num_2) {
             tmp_res_num = "1" + String(res_num);
-            ope_num_1 = parseInt(tmp_res_num,10) - ope_num_2;
-        }
-        else {
+            ope_num_1 = parseInt(tmp_res_num, 10) - ope_num_2;
+        } else {
             ope_num_1 = res_num - ope_num_2;
         }
-    }
-    else if (
+    } else if (
         !isSymbol(ope_num_1) &&
         !isSymbol(ope_num_2) &&
         isSymbol(res_num)
@@ -54,7 +49,7 @@ function solveWormEatingCaluculatorForPlus(intermediate) {
         tmp_res_num = parseInt(ope_num_1) + parseInt(ope_num_2);
         if (String(tmp_res_num).length >= 2) {
             res_num = String(tmp_res_num).slice(-1);
-            res_move_up_num = String(tmp_res_num).slice(0,1);
+            res_move_up_num = String(tmp_res_num).slice(0, 1);
         } else {
             res_num = tmp_res_num;
         }
@@ -63,7 +58,7 @@ function solveWormEatingCaluculatorForPlus(intermediate) {
     if (res_move_up_num) {
         res_num = String(res_move_up_num) + res_num;
     }
-    
+
     res = [];
     res.push(ope_num_1);
     res.push(ope_num_2);
@@ -138,7 +133,7 @@ function convert(oneLine) {
     } else {
         return invalidValueString;
     }
-    
+
 }
 
 function isSymbol(i) {
@@ -157,7 +152,7 @@ const execute = (testData) => {
     var resultData = [];
     testData.forEach(function (oneLine) {
         var valid = isValid(oneLine);
-        if (! valid) {
+        if (!valid) {
             resultData.push(invalidValueString);
             return;
         }
