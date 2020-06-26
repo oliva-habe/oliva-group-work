@@ -7,18 +7,34 @@ function isValid(oneLine) {
 }
 
 function solveWormEatingCaluculatorForPlus(intermediate) {
-    intermediate.result = 'xx?xxx';
-
-    if (!isSimbole(intermediate.operand1.slice(0,-1)) 
-        & !isSimbole(intermediate.operand2.slice(0,-1)) 
-        & !isSimbole(intermediate.result.slice(0,-1))) {
+    // intermediate.forEach(element)
+    ope_num_1 = intermediate.operand1.slice(0,-1);
+    ope_num_2 = intermediate.operand2.slice(0,-1);
+    res_num = intermediate.result.slice(0,-1);
+    if (
+        !isSimbole(ope_num_1) &
+        !isSimbole(ope_num_2) &
+        !isSimbole(res_num)
+    ) {
         
     }
-    else if (isSimbole(intermediate.operand1.slice(0,-1))
-        & !isSimbole(intermediate.operand2.slice(0,-1))
-        & isSimbole(intermediate.result.slice(0,-1))) {
-            
+    else if (
+        isSimbole(ope_num_1) & 
+        !isSimbole(ope_num_2) & 
+        isSimbole(res_num)
+    ) {
+        alert("hi");
+        if (res_num < ope_num_1) {
+            tmp_res_num = "1" + res_num.toString;
+            ope_num_2 = parseInt(tmp_res_num) - ope_num_1;
+        }
+        else {
+            ope_num_2 = res_num - ope_num_1;
+        }
     }
+    alert(ope_num_1);
+    alert(ope_num_2);
+    alert(res_num);
 
     return undefined;
 }
