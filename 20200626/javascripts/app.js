@@ -4,8 +4,27 @@ function isValid(oneLine) {
     return false;
 }
 
-function solveWormEatingCaluculator(intermediate) {
+function solveWormEatingCaluculatorForPlus(intermediate) {
     return undefined;
+}
+
+function solveWormEatingCaluculatorForMinus(intermediate) {
+    return undefined;
+}
+
+function solveWormEatingCaluculatorForMulti(intermediate) {
+    return undefined;
+}
+
+function solveWormEatingCaluculator(intermediate) {
+    if(intermediate.operator === "+") {
+        return solveWormEatingCaluculatorForPlus(intermediate);
+    } else if(intermediate.operator === "-") {
+        return solveWormEatingCaluculatorForMinus(intermediate);
+    } else if(intermediate.operator === "*") {
+        return solveWormEatingCaluculatorForMulti(intermediate);
+    }
+    return invalidValueString;
 }
 
 function convert(oneLine) {
