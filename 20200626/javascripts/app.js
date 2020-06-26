@@ -9,12 +9,16 @@ function isValid(oneLine) {
 function solveWormEatingCaluculatorForPlus(intermediate) {
     intermediate.result = 'xx?xxx';
 
-    if (isSimbole(intermediate.operand1.slice(0,-1)) 
-    & isSimbole(intermediate.operand2.slice(0,-1)) 
-    & isSimbole(intermediate.result.slice(0,-1))) {
-
+    if (!isSimbole(intermediate.operand1.slice(0,-1)) 
+        & !isSimbole(intermediate.operand2.slice(0,-1)) 
+        & !isSimbole(intermediate.result.slice(0,-1))) {
+        
     }
-    elif
+    else if (isSimbole(intermediate.operand1.slice(0,-1))
+        & !isSimbole(intermediate.operand2.slice(0,-1))
+        & isSimbole(intermediate.result.slice(0,-1))) {
+            
+    }
 
     return undefined;
 }
