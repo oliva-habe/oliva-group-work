@@ -8,35 +8,36 @@ function isValid(oneLine) {
 
 function solveWormEatingCaluculatorForPlus(intermediate) {
     // intermediate.forEach(element)
-    ope_num_1 = intermediate.operand1.slice(0,-1);
-    ope_num_2 = intermediate.operand2.slice(0,-1);
-    res_num = intermediate.result.slice(0,-1);
+    ope_num_1 = intermediate.operand1.slice(-1);
+    ope_num_2 = intermediate.operand2.slice(-1);
+    res_num = intermediate.result.slice(-1);
     if (
-        !isSymbol(ope_num_1) &
-        !isSymbol(ope_num_2) &
+        !isSymbol(ope_num_1) &&
+        !isSymbol(ope_num_2) &&
         !isSymbol(res_num)
     ) {
         
     }
     else if (
-        isSymbol(ope_num_1) & 
-        !isSymbol(ope_num_2) & 
-        isSymbol(res_num)
+        !isSymbol(ope_num_1) &&
+        isSymbol(ope_num_2) &&
+        !isSymbol(res_num)
     ) {
-        alert("hi");
         if (res_num < ope_num_1) {
-            tmp_res_num = "1" + res_num.toString;
-            ope_num_2 = parseInt(tmp_res_num) - ope_num_1;
+            tmp_res_num = "1" + String(res_num);
+            ope_num_2 = parseInt(tmp_res_num,10) - ope_num_1;
         }
         else {
             ope_num_2 = res_num - ope_num_1;
         }
     }
-    alert(ope_num_1);
-    alert(ope_num_2);
-    alert(res_num);
+    res = [];
+    res.push(ope_num_1);
+    res.push(ope_num_2);
+    res.push("+");
+    res.push(res_num);
 
-    return undefined;
+    return res;
 }
 
 function solveWormEatingCaluculatorForMinus(intermediate) {
