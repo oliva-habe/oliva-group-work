@@ -1,7 +1,9 @@
-let invalidValueString = "Invalid value!!";
+const invalidValueString = "Invalid value!!";
 
 function isValid(oneLine) {
-    return false;
+    reg = /([\d\?]+)\,([\d\?]+)\,([\+\-\*]),(([\d\?]+),([\d\?]+))?,([\d\?]+)/;
+
+    return oneLine.match(reg);
 }
 
 function solveWormEatingCaluculatorForPlus(intermediate) {
@@ -26,11 +28,11 @@ function solveWormEatingCaluculatorForMulti(intermediate) {
 }
 
 function solveWormEatingCaluculator(intermediate) {
-    if(intermediate.operator === "+") {
+    if (intermediate.operator === "+") {
         return solveWormEatingCaluculatorForPlus(intermediate);
-    } else if(intermediate.operator === "-") {
+    } else if (intermediate.operator === "-") {
         return solveWormEatingCaluculatorForMinus(intermediate);
-    } else if(intermediate.operator === "*") {
+    } else if (intermediate.operator === "*") {
         return solveWormEatingCaluculatorForMulti(intermediate);
     }
     return invalidValueString;
@@ -45,25 +47,25 @@ function convert(oneLine) {
             return invalidValueString;
         }
 
-      return {
-        'operand1': line[0],
-        'operand2': line[1],
-        'operator': operator,
-        'midresult1': line[3],
-        'midresult2': line[4],
-        'result': line[5]
-      };
+        return {
+            'operand1': line[0],
+            'operand2': line[1],
+            'operator': operator,
+            'midresult1': line[3],
+            'midresult2': line[4],
+            'result': line[5]
+        };
     } else if (operator === '+' || operator === '-') {
         if (line.length !== 4) {
             return invalidValueString;
         }
 
-      return {
-        'operand1': line[0],
-        'operand2': line[1],
-        'operator': operator,
-        'result': line[3]
-      };
+        return {
+            'operand1': line[0],
+            'operand2': line[1],
+            'operator': operator,
+            'result': line[3]
+        };
     } else {
         return invalidValueString;
     }
@@ -81,7 +83,7 @@ const execute = (testData) => {
         return invalidValueString
     }
 
-    testData = testData.split("\r\n");
+    testData = testData.split("\n");
 
     var resultData = [];
     testData.forEach(function (oneLine) {
