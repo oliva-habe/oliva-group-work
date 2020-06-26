@@ -11,6 +11,7 @@ function solveWormEatingCaluculatorForPlus(intermediate) {
     ope_num_1 = intermediate.operand1.slice(-1);
     ope_num_2 = intermediate.operand2.slice(-1);
     res_num = intermediate.result.slice(-1);
+    res_move_up_num = null;
     if (
         !isSymbol(ope_num_1) &&
         !isSymbol(ope_num_2) &&
@@ -32,6 +33,19 @@ function solveWormEatingCaluculatorForPlus(intermediate) {
         }
     }
     else if (
+        isSymbol(ope_num_1) &&
+        !isSymbol(ope_num_2) &&
+        !isSymbol(res_num)
+    ) {
+        if (res_num < ope_num_2) {
+            tmp_res_num = "1" + String(res_num);
+            ope_num_1 = parseInt(tmp_res_num,10) - ope_num_2;
+        }
+        else {
+            ope_num_1 = res_num - ope_num_2;
+        }
+    }
+    else if (
         !isSymbol(ope_num_1) &&
         !isSymbol(ope_num_2) &&
         isSymbol(res_num)
@@ -39,10 +53,16 @@ function solveWormEatingCaluculatorForPlus(intermediate) {
         tmp_res_num = parseInt(ope_num_1) + parseInt(ope_num_2);
         if (String(tmp_res_num).length >= 2) {
             res_num = String(tmp_res_num).slice(-1);
+            res_move_up_num = String(tmp_res_num).slice(0,1);
         } else {
             res_num = tmp_res_num;
         }
     }
+
+    if (res_move_up_num) {
+        res_num = String(res_move_up_num) + res_num;
+    }
+    
     res = [];
     res.push(ope_num_1);
     res.push(ope_num_2);
